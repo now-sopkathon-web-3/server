@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum SuccessMessage {
-    HEALTH_CHECK_SUCCESS("Health check success");
+public enum FailMessage {
+    ;
 
     private final String message;
 }
