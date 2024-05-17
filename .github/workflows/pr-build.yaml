@@ -35,12 +35,12 @@ jobs:
           java-version: '21'
           distribution: 'corretto'
 
-      - name: application.yml
+      - name: create application-secret.properties
         run: |
           cd src/main/resources
           touch ./application-secret.properties
           echo "${{ secrets.APPLICATION_SECRET }}" >> ./application-secret.properties        
-          cat ./application.yml
+          cat ./application-secret.properties
 
         shell: bash
 
