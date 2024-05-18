@@ -43,7 +43,7 @@ tag: 내용
 ```
 
 ## ERD
-<img width="1081" alt="image" src="https://github.com/now-sopkathon-web-3/server/assets/81692211/a376d42a-8db9-49a6-969b-6083bc2b56de">
+<img width="1083" alt="image" src="https://github.com/now-sopkathon-web-3/server/assets/81692211/01143c1f-bf8e-4e56-aa06-4cd93b300c0d">
 
 
 ## API 명세서
