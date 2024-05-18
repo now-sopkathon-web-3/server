@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import site.sopkathon.product.common.message.SuccessMessage;
 import site.sopkathon.product.common.response.BaseResponse;
@@ -30,8 +31,10 @@ public class RankController {
             }
 
     )
-    public ResponseEntity<BaseResponse<MemberRankListResponse>> getMembersRank() {
-        return BaseResponse.ok(SuccessMessage.GET_RANK_SUCCESS, memberRankService.getMembersRank());
+    public ResponseEntity<BaseResponse<MemberRankListResponse>> getMembersRank(
+            @RequestHeader("Authorization") final long userId
+    ) {
+        return BaseResponse.ok(SuccessMessage.GET_RANK_SUCCESS, memberRankService.getMembersRank(userId));
     }
 
 }
