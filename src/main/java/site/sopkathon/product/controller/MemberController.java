@@ -45,6 +45,7 @@ public class MemberController {
                     @ApiResponse(responseCode = "200", description = "회원 로그인 성공")
             }
     )
+    @PostMapping("/sign-in")
     public ResponseEntity<BaseResponse<MemberSignInResponse>> login(
             @RequestBody final MemberSignInRequest request
             ) {
