@@ -4,7 +4,7 @@ import site.sopkathon.product.domain.Member;
 
 public record MyRankResponse(
         long userId,
-        String nickname,
+        String username,
         int foodIslandCount,
         int streak,
         Integer rank
