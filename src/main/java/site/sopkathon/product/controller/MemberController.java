@@ -39,6 +39,7 @@ public class MemberController {
         return BaseResponse.created(SuccessMessage.MEMBER_SIGN_UP_SUCCESS, response);
     }
 
+    @Operation(summary = "내 정보 조회", description = "나의 카운트 값과 연속일 수를 조회합니다.")
     @GetMapping
     public ResponseEntity<BaseResponse<MemberInfoResponse>> getMyInfo(
             @RequestHeader("Authorization") final long userId

@@ -14,9 +14,9 @@ import site.sopkathon.product.dto.request.FoodRecordUploadImageRequest;
 import site.sopkathon.product.service.FoodRecordUploadService;
 
 @RestController
-@RequestMapping("/history")
+@RequestMapping("/histories")
 @RequiredArgsConstructor
-@Tag(name = "[FoodHistory API]", description = "하루 음식 기록 업로드 API")
+@Tag(name = "[FoodRecordUpload API]", description = "하루 음식 기록 업로드 API")
 public class FoodRecordUploadController {
 
     private final FoodRecordUploadService foodRecordUploadService;
