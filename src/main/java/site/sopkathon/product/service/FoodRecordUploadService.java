@@ -8,7 +8,7 @@ import site.sopkathon.product.common.exception.BadRequestException;
 import site.sopkathon.product.common.exception.InternalServerErrorException;
 import site.sopkathon.product.domain.FoodHistory;
 import site.sopkathon.product.domain.Member;
-import site.sopkathon.product.dto.request.FoodRecordUploadImageRequest;
+import site.sopkathon.product.dto.request.history.FoodRecordUploadRequest;
 import site.sopkathon.product.repository.FoodHistoryRepository;
 import site.sopkathon.product.repository.MemberRepository;
 
@@ -22,21 +22,22 @@ public class FoodRecordUploadService {
     private static final String S3_DIRECTORY = "images/";
     private final FoodHistoryRepository foodHistoryRepository;
     private final MemberRepository memberRepository;
-    private final S3Service service;
+    private final S3Service s3Service;
 
     @Transactional
     public void uploadFoodRecord(
             long userId,
-            MultipartFile image, FoodRecordUploadImageRequest request
+            MultipartFile image, FoodRecordUploadRequest request
     ) {
         try {
             Member member = memberRepository.findById(userId)
                     .orElseThrow(() -> new BadRequestException("사용자가 존재하지 않습니다. userId: " + userId));
 
-            String url = service.uploadImage(S3_DIRECTORY, image);
+            String url = s3Service.uploadImage(S3_DIRECTORY, image);
 
             foodHistoryRepository.save(FoodHistory.builder()
                     .foodTitle(request.foodTitle())
+                    .isSuccess(request.isSuccess())
                     .member(member)
                     .imageUrl(url)
                     .build());

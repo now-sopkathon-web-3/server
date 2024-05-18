@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import site.sopkathon.product.common.message.SuccessMessage;
 import site.sopkathon.product.common.response.BaseResponse;
-import site.sopkathon.product.dto.request.FoodRecordUploadImageRequest;
+import site.sopkathon.product.dto.request.history.FoodRecordUploadRequest;
 import site.sopkathon.product.service.FoodRecordUploadService;
 
 @RestController
@@ -30,7 +30,7 @@ public class FoodRecordUploadController {
     @PostMapping
     public ResponseEntity<BaseResponse<Void>> uploadFoodRecord(
             @RequestHeader("Authorization") final long userId,
-            @RequestPart MultipartFile image, FoodRecordUploadImageRequest request
+            @RequestPart MultipartFile image, FoodRecordUploadRequest request
     ) {
         foodRecordUploadService.uploadFoodRecord(userId, image, request);
         return BaseResponse.created(SuccessMessage.FOOD_RECORD_UPLOAD_SUCCESS, null);
