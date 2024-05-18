@@ -7,13 +7,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import site.sopkathon.product.common.message.SuccessMessage;
 import site.sopkathon.product.common.response.BaseResponse;
+import site.sopkathon.product.dto.request.member.GetMyInfoRequest;
 import site.sopkathon.product.dto.request.member.MemberSignInRequest;
+import site.sopkathon.product.dto.response.member.MemberInfoResponse;
 import site.sopkathon.product.dto.response.member.MemberSignInResponse;
 import site.sopkathon.product.service.MemberService;
 
@@ -40,4 +39,12 @@ public class MemberController {
         return BaseResponse.created(SuccessMessage.MEMBER_SIGN_UP_SUCCESS, response);
     }
 
+    @GetMapping
+    public ResponseEntity<BaseResponse<MemberInfoResponse>> getMyInfo(
+            @RequestHeader("Authorization") final long userId
+    ) {
+        MemberInfoResponse memberInfo = memberService.getMyInfo(userId);
+
+        return BaseResponse.ok(SuccessMessage.GET_MY_INFO_SUCCESS, memberInfo);
+    }
 }
