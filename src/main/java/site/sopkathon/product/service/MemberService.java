@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import site.sopkathon.product.common.exception.BadRequestException;
 import site.sopkathon.product.domain.Member;
+import site.sopkathon.product.dto.request.member.MemberSignInRequest;
 import site.sopkathon.product.dto.request.member.MemberSignUpRequest;
+import site.sopkathon.product.dto.response.member.MemberSignInResponse;
 import site.sopkathon.product.dto.response.member.MemberSignUpResponse;
 import site.sopkathon.product.repository.MemberRepository;
 
@@ -28,6 +30,12 @@ public class MemberService {
                         .build()
         );
         return MemberSignUpResponse.of(savedMember.getId());
+    }
+
+    public MemberSignInResponse login(final MemberSignInRequest request) {
+        final Member findMember =  memberRepository.findByUsername(request.username())
+                .orElseThrow(() -> new BadRequestException("존재하지 않는 회원입니다."));
+        return MemberSignInResponse.of(findMember.getId());
     }
 
 }
