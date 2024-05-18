@@ -4,10 +4,10 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    driver-class-name:
-    url:
-    username:
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DEV_DB_ENDPOINT}:5432/postgres?currentSchema=${DEV_DB_SCHEMA}
+    username: ${DEV_DB_USERNAME}
+    password: ${DEV_DB_PASSWORD}
   jpa:
     show-sql: true
     properties:
@@ -24,3 +24,9 @@ spring:
 logging:
   level:
     org.hibernate.orm.jdbc.bind: TRACE
+
+aws-property:
+  s3-bucket-name: ${S3_BUCKET_NAME}
+  aws-region: ${S3_REGION}
+  access-key: ${S3_ACCESS_KEY}
+  secret-key: ${S3_SECRET_KEY}

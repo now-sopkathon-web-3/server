@@ -23,6 +23,6 @@ public class HealthCheckController {
     )
     @GetMapping
     public ResponseEntity<BaseResponse<Void>> healthCheck() {
-        return ResponseEntity.ok(BaseResponse.success(SuccessMessage.HEALTH_CHECK_SUCCESS));
+        return BaseResponse.ok(SuccessMessage.HEALTH_CHECK_SUCCESS);
     }
 }
