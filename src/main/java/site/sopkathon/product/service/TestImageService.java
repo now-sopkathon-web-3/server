@@ -15,7 +15,7 @@ import java.io.IOException;
 @Slf4j
 public class TestImageService {
 
-    private static final String S3_DIRECTORY = "testimages";
+    private static final String S3_DIRECTORY = "testimages/";
 
     private final S3Service service;
 
