@@ -43,6 +43,8 @@ tag: 내용
 ```
 
 ## ERD
+<img width="1081" alt="image" src="https://github.com/now-sopkathon-web-3/server/assets/81692211/a376d42a-8db9-49a6-969b-6083bc2b56de">
+
 
 ## API 명세서
 [API 명세서](https://utopian-waterfall-e99.notion.site/API-63bad304198549e8af7992f92dde9bf8?pvs=4)
