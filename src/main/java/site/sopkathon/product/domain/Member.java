@@ -1,15 +1,24 @@
 package site.sopkathon.product.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import site.sopkathon.product.common.entity.BaseTimeEntity;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+@Getter
+public class Member extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, unique = true, length = 50)
+    private String username;
+
+    @Builder
+    public Member(String username) {
+        this.username = username;
+    }
 }
