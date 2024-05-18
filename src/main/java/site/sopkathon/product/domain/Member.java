@@ -17,6 +17,10 @@ public class Member extends BaseTimeEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
+    private int streak = 0;
+    private int foodCount = 0;
+
+
     @Builder
     public Member(String username) {
         this.username = username;
