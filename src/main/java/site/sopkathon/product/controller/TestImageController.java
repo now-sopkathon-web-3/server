@@ -21,7 +21,7 @@ public class TestImageController {
     public ResponseEntity<BaseResponse<Void>> uploadImageTest(
             @RequestPart MultipartFile image, TestImageRequest request
             ) {
-        return BaseResponse.success(SuccessMessage.HEALTH_CHECK_SUCCESS, null);
+        return BaseResponse.ok(SuccessMessage.HEALTH_CHECK_SUCCESS, null);
     }
 
 }
