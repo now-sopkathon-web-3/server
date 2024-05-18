@@ -14,14 +14,14 @@ import site.sopkathon.product.common.response.BaseResponse;
 import site.sopkathon.product.dto.response.rank.MemberRankListResponse;
 import site.sopkathon.product.service.MemberRankService;
 
-@RestController("/members/rank")
+@RestController
 @RequiredArgsConstructor
 @Tag(name = "[Rank API]", description = "랭킹 관련")
 public class RankController {
 
     private final MemberRankService memberRankService;
 
-    @GetMapping
+    @GetMapping("/members/rank")
     @Operation(summary = "랭킹 조회", description = "랭킹을 조회합니다.")
     @ApiResponses(
             value = {
