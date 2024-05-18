@@ -29,9 +29,10 @@ public class FoodRecordUploadController {
     )
     @PostMapping
     public ResponseEntity<BaseResponse<Void>> uploadFoodRecord(
+            @RequestHeader("Authorization") final long userId,
             @RequestPart MultipartFile image, FoodRecordUploadImageRequest request
     ) {
-        foodRecordUploadService.uploadFoodRecord(image, request);
+        foodRecordUploadService.uploadFoodRecord(userId, image, request);
         return BaseResponse.created(SuccessMessage.FOOD_RECORD_UPLOAD_SUCCESS, null);
     }
 }
