@@ -37,7 +37,7 @@ public class S3Service {
 
         RequestBody requestBody = RequestBody.fromBytes(image.getBytes());
         s3Client.putObject(request, requestBody);
-        return key;
+        return "https://" + bucketName + ".ap-northeast-2.amazonaws.com/" + key;
     }
 
     public void deleteImage(String key) throws IOException {

@@ -25,4 +25,16 @@ public class Member extends BaseTimeEntity {
     public Member(String username) {
         this.username = username;
     }
+
+    public void updateStreak() {
+        this.streak++;
+    }
+
+    public void updateFoodCount() {
+        this.foodCount++;
+    }
+
+    public void resetStreak() {
+        this.streak = 0;
+    }
 }

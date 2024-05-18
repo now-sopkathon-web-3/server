@@ -21,9 +21,9 @@ public class FoodHistoryController {
 
     @GetMapping
     public ResponseEntity<BaseResponse<HistoryListResponse>> getHistories(
-            @RequestHeader("Authorization") final long memberId
+            @RequestHeader("Authorization") final long userId
     ) {
-        historyService.getHistories(memberId);
-        return BaseResponse.ok(SuccessMessage.GET_HISTORY_LIST_SUCCESS,historyService.getHistories(memberId));
+        historyService.getHistories(userId);
+        return BaseResponse.ok(SuccessMessage.GET_HISTORY_LIST_SUCCESS,historyService.getHistories(userId));
     }
 }
