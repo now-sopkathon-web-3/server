@@ -20,21 +20,13 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public MemberSignUpResponse signUp(final MemberSignUpRequest request) {
-        if (!memberRepository.existsByUsername(request.username())) {
-            throw new BadRequestException("이미 존재하는 회원입니다.");
-        }
-        final Member savedMember = memberRepository.save(
-                Member.builder()
-                        .username(request.username())
-                        .build()
-        );
-        return MemberSignUpResponse.of(savedMember.getId());
-    }
-
-    public MemberSignInResponse login(final MemberSignInRequest request) {
+    public MemberSignInResponse signUp(final MemberSignInRequest request) {
         final Member findMember =  memberRepository.findByUsername(request.username())
-                .orElseThrow(() -> new BadRequestException("존재하지 않는 회원입니다."));
+                .orElse(
+                        memberRepository.save(Member.builder()
+                                        .username(request.username())
+                                        .build()
+                ));
         return MemberSignInResponse.of(findMember.getId());
     }
 
