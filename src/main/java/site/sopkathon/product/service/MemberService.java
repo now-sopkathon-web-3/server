@@ -21,13 +21,16 @@ public class MemberService {
 
     @Transactional
     public MemberSignInResponse signUp(final MemberSignInRequest request) {
-        final Member findMember =  memberRepository.findByUsername(request.username())
-                .orElse(
-                        memberRepository.save(Member.builder()
+        boolean isExist =  memberRepository.existsByUsername(request.username());
+        if (isExist) {
+            return MemberSignInResponse.of(memberRepository.findByUsername(request.username())
+                    .orElseThrow(() -> new BadRequestException("회원 정보를 찾을 수 없습니다.")).getId());
+        }
+
+        Member savedMember = memberRepository.save(Member.builder()
                                         .username(request.username())
-                                        .build()
-                ));
-        return MemberSignInResponse.of(findMember.getId());
+                                        .build());
+        return MemberSignInResponse.of(savedMember.getId());
     }
 
 }
