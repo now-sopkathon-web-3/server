@@ -5,9 +5,9 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name:
-    url:
-    username:
-    password:
+    url: jdbc:postgresql://${DEV_DB_ENDPOINT}:5432/postgres
+    username: ${DEV_DB_USERNAME}
+    password: ${DEV_DB_PASSWORD}
   jpa:
     show-sql: true
     properties:
