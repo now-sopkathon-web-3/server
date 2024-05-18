@@ -36,10 +36,7 @@ public class MemberService {
         final Member member = memberRepository.findById(userId)
                 .orElseThrow(() -> new BadRequestException("사용자가 존재하지 않습니다. userId: " + userId));
 
-        int foodIslandCount = member.getFoodCount();
-        int streak = member.getStreak();
-
-        return MemberInfoResponse.of(userId, foodIslandCount, streak);
+        return MemberInfoResponse.of(member);
     }
 
 

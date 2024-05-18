@@ -1,5 +1,7 @@
 package site.sopkathon.product.dto.response.member;
 
+import site.sopkathon.product.domain.Member;
+
 public record MemberInfoResponse(
         long userId,
         int foodIslandCount,
@@ -7,7 +9,7 @@ public record MemberInfoResponse(
 
 
 ) {
-    public static MemberInfoResponse of(long userId, int foodIslandCount, int streak) {
-        return new MemberInfoResponse(userId, foodIslandCount, streak);
+    public static MemberInfoResponse of(Member member) {
+        return new MemberInfoResponse(member.getId(), member.getFoodCount(), member.getStreak());
     }
 }
